@@ -2,11 +2,6 @@
 
 namespace JustDisableIt\Controller;
 
-/**
- * Responsible for disabling WordPress default sitemaps.
- * 
- * @package JustDisableIt\Controller
- */
 class DisableSitemapsController {
 
     public function __construct() {

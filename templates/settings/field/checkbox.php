@@ -1,14 +1,18 @@
 <?php
 
-$option_value = get_option( $args['option'] );
+$model = new \JustDisableIt\Model\SettingModel();
+
+$option_name = $model->get_option_name( $args['setting'] );
+
+$option_value = $model->get_value( $args['setting'] );
 $checked      = ! empty( $option_value ) ? 'checked' : '';
 
 ?>
 
 <p>
     <input 
-        id="<?php echo esc_attr( $args['option'] ); ?>"
-        name="<?php echo esc_attr( $args['option'] ); ?>"
+        id="<?php echo esc_attr( $option_name ); ?>"
+        name="<?php echo esc_attr( $option_name ); ?>"
         type="checkbox"
         <?php echo esc_attr( $checked ); ?>>
 </p>

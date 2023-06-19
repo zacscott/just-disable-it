@@ -17,7 +17,7 @@ class SettingsController {
 
     public function __construct() {
         
-        add_action( 'init', [ $this, 'set_settings_config' ] );
+        add_action( 'admin_init', [ $this, 'set_settings_config' ], -1 );
         add_action( 'admin_menu', [ $this, 'register_settings_page' ] );
         add_action( 'admin_init', [ $this, 'register_settings_section' ] );
         add_action( 'admin_init', [ $this, 'register_settings' ] );
@@ -87,11 +87,11 @@ class SettingsController {
         // Render the settings page.
 
         $template_path = sprintf(
-            '%s/templates/settings/section.php',
+            '%s/templates/settings/page.php',
             JUST_DISABLE_IT_PLUGIN_ABSPATH
         );
 
-        require_once $template_path;
+        include $template_path;
 
     }
 
@@ -123,7 +123,7 @@ class SettingsController {
             JUST_DISABLE_IT_PLUGIN_ABSPATH
         );
 
-        require_once $template_path;
+        include $template_path;
 
     }
 
@@ -164,7 +164,7 @@ class SettingsController {
             $args['type']
         );
 
-        require_once $template_path;
+        include $template_path;
 
     }
 

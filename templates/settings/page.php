@@ -13,4 +13,3 @@ settings_errors( 'just_disable_it_messages' );
         ?>
     </form>
 </div>
-<?php

@@ -1,7 +1,7 @@
 <?php
 
 $option_value = get_option( $args['option'] );
-$checked      = ! empty( $option_value );
+$checked      = ! empty( $option_value ) ? 'checked' : '';
 
 ?>
 
@@ -14,5 +14,5 @@ $checked      = ! empty( $option_value );
 </p>
 
 <p class="description">
-    <?php esc_html_e( 'Some description goes here.', 'just_disable_it' ); ?>
+    <?php echo esc_html( $args['desc'] ); ?>
 </p>

@@ -33,6 +33,12 @@ class SettingsController {
 
         $this->settings = [
             [
+                'setting' => 'disable_xmlrpc',
+                'type'    => 'checkbox',
+                'label'   => __( 'Disable XMLRPC', 'just-disable-it' ),
+                'desc'    => __( 'Disable the WordPress XMLRPC interface', 'just-disable-it' ),
+            ],
+            [
                 'setting' => 'disable_sitemaps',
                 'type'    => 'checkbox',
                 'label'   => __( 'Disable Sitemaps', 'just-disable-it' ),

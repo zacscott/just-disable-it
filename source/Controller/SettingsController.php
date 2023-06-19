@@ -9,52 +9,59 @@ namespace JustDisableIt\Controller;
  */
 class SettingsController {
 
+    const SETTINGS = [
+
+    ];
+
     public function __construct() {
         
         add_action( 'admin_menu', [ $this, 'register_settings_page' ] );
+        add_action( 'admin_init', [ $this, 'register_settings_section' ] );
         add_action( 'admin_init', [ $this, 'register_settings' ] );
 
     }
 
     public function register_settings_page() {
 
-        add_menu_page(
-            'WPOrg',
-            'WPOrg Options',
+        add_submenu_page(
+            'options-general.php',
+            'Just Disable It',
+            'Just Disable It',
             'manage_options',
-            'wporg',
+            'just_disable_it',
             [ $this, 'render_settings_page' ]
         );
 
     }
     
-    function render_settings_page() {
+    public function render_settings_page() {
 
-        // check user capabilities
+        // Ensure current user has access.
         if ( ! current_user_can( 'manage_options' ) ) {
             return;
         }
 
-        // add error/update messages
-
+        // Show a notice when settings are saved.
         if ( isset( $_POST['update'] ) ) {
-            // add settings saved message with the class of "updated"
-            add_settings_error( 'wporg_messages', 'wporg_message', __( 'Settings Saved', 'wporg' ), 'updated' );
+
+            add_settings_error(
+                'just_disable_it_messages',
+                'just_disable_it_message',
+                __( 'Settings Saved', 'just-disable-it' ),
+                'updated'
+            );
+
         }
 
-        // show error/update messages
-        settings_errors( 'wporg_messages' );
+        // Render the settings template.
+        settings_errors( 'just_disable_it_messages' );
         ?>
         <div class="wrap">
             <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
             <form action="options.php" method="post">
                 <?php
-                // output security fields for the registered setting "wporg"
-                settings_fields( 'wporg' );
-                // output setting sections and their fields
-                // (sections are registered for "wporg", each field is registered to a specific section)
-                do_settings_sections( 'wporg' );
-                // output save settings button
+                settings_fields( 'just_disable_it' );
+                do_settings_sections( 'just_disable_it' );
                 submit_button( 'Save' );
                 ?>
             </form>
@@ -63,57 +70,61 @@ class SettingsController {
 
     }
 
-    public function register_settings() {
-
-        // Register a new setting for "wporg" page.
-        register_setting( 'wporg', 'wporg_options' );
-
-        // Register a new section in the "wporg" page.
+    public function register_settings_section() {
+        
         add_settings_section(
-            'wporg_section_developers',
-            __( 'The Matrix has you.', 'wporg' ),
+            'just_disable_it_section',
+            '',
             [ $this, 'render_settings_section' ],
-            'wporg'
+            'just_disable_it'
         );
 
-        // Register a new field in the "wporg_section_developers" section, inside the "wporg" page.
+    }
+
+    public function register_settings() {
+
+        register_setting( 'just_disable_it', 'just_disable_it_option' );
+
         add_settings_field(
-            'wporg_field_pill', 
-            __( 'Pill', 'wporg' ),
+            'just_disable_it_option', 
+            __( 'Pill', 'just-disable-it' ),
             [ $this, 'render_settings_field' ],
-            'wporg',
-            'wporg_section_developers'
+            'just_disable_it',
+            'just_disable_it_section',
+            [
+                'option_name' => 'just_disable_it_option',
+            ]
         );
         
     }
 
-    function render_settings_section( $args ) {
+    public function render_settings_section( $args ) {
         ?>
-        <p id="<?php echo esc_attr( $args['id'] ); ?>"><?php esc_html_e( 'Follow the white rabbit.', 'wporg' ); ?></p>
+        <p>
+            <?php esc_html_e( 'Some description goes here.', 'just-disable-it' ); ?>
+        </p>
         <?php
     }
 
-    function render_settings_field( $args ) {
-        // Get the value of the setting we've registered with register_setting()
-        $options = get_option( 'wporg_options' );
+    public function render_settings_field( $args ) {
+
+        $option_value = get_option( $args['option_name'] );
+        $checked      = ! empty( $option_value );
+
         ?>
-        <select
-                id="<?php echo esc_attr( $args['label_for'] ); ?>"
-                data-custom="<?php echo esc_attr( $args['wporg_custom_data'] ); ?>"
-                name="wporg_options[<?php echo esc_attr( $args['label_for'] ); ?>]">
-            <option value="red" <?php echo isset( $options[ $args['label_for'] ] ) ? ( selected( $options[ $args['label_for'] ], 'red', false ) ) : ( '' ); ?>>
-                <?php esc_html_e( 'red pill', 'wporg' ); ?>
-            </option>
-             <option value="blue" <?php echo isset( $options[ $args['label_for'] ] ) ? ( selected( $options[ $args['label_for'] ], 'blue', false ) ) : ( '' ); ?>>
-                <?php esc_html_e( 'blue pill', 'wporg' ); ?>
-            </option>
-        </select>
-        <p class="description">
-            <?php esc_html_e( 'You take the blue pill and the story ends. You wake in your bed and you believe whatever you want to believe.', 'wporg' ); ?>
+
+        <p>
+            <input 
+                id="<?php echo esc_attr( $args['option_name'] ); ?>"
+                name="<?php echo esc_attr( $args['option_name'] ); ?>"
+                type="checkbox"
+                <?php echo esc_attr( $checked ); ?>>
         </p>
+
         <p class="description">
-            <?php esc_html_e( 'You take the red pill and you stay in Wonderland and I show you how deep the rabbit-hole goes.', 'wporg' ); ?>
+            <?php esc_html_e( 'Some description goes here.', 'just_disable_it' ); ?>
         </p>
+
         <?php
 
     }

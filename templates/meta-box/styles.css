@@ -1,0 +1,20 @@
+
+.just-seo-widget .field {
+    margin-bottom: 1em;
+}
+
+.just-seo-widget input,
+.just-seo-widget select,
+.just-seo-widget textarea {
+    width: 100%;
+    padding: 0.5em;
+}
+
+.just-seo-widget textarea {
+    height: 8em;
+}
+
+.just-seo-widget label {
+    font-weight: bold;
+    display: block;
+}

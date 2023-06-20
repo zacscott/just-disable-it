@@ -26,7 +26,7 @@ class DisableRESTController {
         remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
         remove_action( 'template_redirect', 'rest_output_link_header', 11 );
 
-        // Disable REST API endpoints
+        // Disable REST API endpoints.
         add_filter( 'json_enabled', '__return_false' );
         add_filter( 'json_jsonp_enabled', '__return_false' );
         add_filter( 'rest_enabled', '__return_false' );

@@ -74,6 +74,12 @@ class SettingsController {
                 'label'   => __( 'Disable Author Archives', 'just-disable-it' ),
                 'desc'    => __( 'Disable author archive pages.', 'just-disable-it' ),
             ],
+            [
+                'setting' => 'disable_404_guessing',
+                'type'    => 'checkbox',
+                'label'   => __( 'Disable 404 Guessing', 'just-disable-it' ),
+                'desc'    => __( 'Disable default WordPress behaviour of attempting to guess incorrect URLs rather than 404ing.', 'just-disable-it' ),
+            ],
         ];
 
     }

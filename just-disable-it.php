@@ -17,3 +17,4 @@ define( 'JUST_DISABLE_IT_PLUGIN_ABSURL', plugin_dir_url( __FILE__ )  );
 new \JustDisableIt\Controller\SettingsController();
 new \JustDisableIt\Controller\DisableXMLRPCController();
 new \JustDisableIt\Controller\DisableSitemapsController();
+new \JustDisableIt\Controller\DisableCommentsController();

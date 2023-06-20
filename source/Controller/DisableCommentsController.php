@@ -19,7 +19,12 @@ class DisableCommentsController {
         // Close comments on the front-end.
         add_filter( 'comments_open', '__return_false', 999999999, 2 );
         add_filter( 'pings_open', '__return_false', 999999999, 2 );
-        
+
+        // Remove comments feed link entirely.
+        remove_all_actions( 'do_feed_rss2_comments' );
+        remove_all_actions( 'do_feed_atom_comments' );
+        add_filter( 'feed_links_show_comments_feed', '__return_false', 999999999 );
+
         // Hide existing comments.
         add_filter( 'comments_array', '__return_empty_array', 999999999, 2 );
 

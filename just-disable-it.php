@@ -20,3 +20,4 @@ new \JustDisableIt\Controller\DisableRESTController();
 new \JustDisableIt\Controller\DisableSitemapsController();
 new \JustDisableIt\Controller\DisableCommentsController();
 new \JustDisableIt\Controller\DisableSearchController();
+new \JustDisableIt\Controller\DisableAuthorArchivesController();

@@ -62,6 +62,12 @@ class SettingsController {
                 'label'   => __( 'Disable Search', 'just-disable-it' ),
                 'desc'    => __( 'Disable any frontend search queries.', 'just-disable-it' ),
             ],
+            [
+                'setting' => 'disable_author_archives',
+                'type'    => 'checkbox',
+                'label'   => __( 'Disable Author Archives', 'just-disable-it' ),
+                'desc'    => __( 'Disable author archive pages.', 'just-disable-it' ),
+            ],
         ];
 
     }

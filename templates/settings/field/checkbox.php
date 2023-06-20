@@ -15,8 +15,7 @@ $checked      = ! empty( $option_value ) ? 'checked' : '';
         name="<?php echo esc_attr( $option_name ); ?>"
         type="checkbox"
         <?php echo esc_attr( $checked ); ?>>
-</p>
-
-<p class="description">
-    <?php echo esc_html( $args['desc'] ); ?>
+    <label for="<?php echo esc_attr( $option_name ); ?>">
+        <?php echo esc_html( $args['desc'] ); ?>
+    </label>
 </p>

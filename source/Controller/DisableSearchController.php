@@ -16,12 +16,17 @@ class DisableSearchController {
             return;
         }
 
+        // Leave search enabled for wp-admin.
+        if ( is_admin() ) {
+            return;
+        }
+
         // 404 any frontend search requests.
         add_action(
             'parse_query',
             function( $query ) {
 
-                if ( ! is_admin() && $query->is_search && $query->is_main_query() ) {
+                if ( $query->is_search && $query->is_main_query() ) {
 
                     unset( $_GET['s'] );
                     unset( $_POST['s'] );

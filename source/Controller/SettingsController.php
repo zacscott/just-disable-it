@@ -39,6 +39,12 @@ class SettingsController {
                 'desc'    => __( 'Disable the XMLRPC API interface.', 'just-disable-it' ),
             ],
             [
+                'setting' => 'disable_rest_api',
+                'type'    => 'checkbox',
+                'label'   => __( 'Disable REST API', 'just-disable-it' ),
+                'desc'    => __( 'Disable the REST API interface for logged out users.', 'just-disable-it' ),
+            ],
+            [
                 'setting' => 'disable_sitemaps',
                 'type'    => 'checkbox',
                 'label'   => __( 'Disable Sitemaps', 'just-disable-it' ),

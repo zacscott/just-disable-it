@@ -16,6 +16,7 @@ define( 'JUST_DISABLE_IT_PLUGIN_ABSURL', plugin_dir_url( __FILE__ )  );
 // Boot each of the plugin logic controllers.
 new \JustDisableIt\Controller\SettingsController();
 new \JustDisableIt\Controller\DisableXMLRPCController();
+new \JustDisableIt\Controller\DisableRESTController();
 new \JustDisableIt\Controller\DisableSitemapsController();
 new \JustDisableIt\Controller\DisableCommentsController();
 new \JustDisableIt\Controller\DisableSearchController();

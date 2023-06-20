@@ -16,7 +16,29 @@ class DisableXMLRPCController {
             return;
         }
 
+        // Disable xmlrpc.php
+
         add_filter( 'xmlrpc_enabled', '__return_false' );
+
+        add_filter(
+            'xmlrpc_methods', 
+            function () {
+                return [];
+            },
+            999999999
+        );
+
+        // Remove link from <head>
+        remove_action( 'wp_head', 'rsd_link' );
+
+        // Remove pingback header from HTTP response.
+        add_filter(
+            'wp_headers', function ( $headers ) {
+                unset( $headers['X-Pingback'] );
+                return $headers;
+            },
+            999999999
+        );
 
     }
 

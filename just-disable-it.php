@@ -24,4 +24,5 @@ new \JustDisableIt\Controller\DisableSearchController();
 new \JustDisableIt\Controller\DisableAuthorArchivesController();
 new \JustDisableIt\Controller\Disable404GuessingController();
 new \JustDisableIt\Controller\DisableEmojiScriptsController();
+new \JustDisableIt\Controller\DisableSrcSetController();
 new \JustDisableIt\Controller\DisableWPBrandingController();

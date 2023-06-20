@@ -87,6 +87,12 @@ class SettingsController {
                 'desc'    => __( 'Disable default WordPress emoji polyfil scripts.', 'just-disable-it' ),
             ],
             [
+                'setting' => 'disable_srcset',
+                'type'    => 'checkbox',
+                'label'   => __( 'Disable srcset on Images', 'just-disable-it' ),
+                'desc'    => __( 'Disable srcset being added to image by WordPress.', 'just-disable-it' ),
+            ],
+            [
                 'setting' => 'disable_wp_branding',
                 'type'    => 'checkbox',
                 'label'   => __( 'Disable WordPress Branding', 'just-disable-it' ),

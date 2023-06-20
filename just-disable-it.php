@@ -4,7 +4,7 @@
  * Version:     1.0
  * Author:      Zac Scott
  * Author URI:  https://zacscott.net
- * Description: Disable WordPress features for a faster, more secure experience.
+ * Description: Disable WordPress features for a faster, cleaner, more secure experience.
  * Text Domain: just-disable-it
  */
 
@@ -18,6 +18,7 @@ new \JustDisableIt\Controller\SettingsController();
 new \JustDisableIt\Controller\DisableXMLRPCController();
 new \JustDisableIt\Controller\DisableRESTController();
 new \JustDisableIt\Controller\DisableSitemapsController();
+new \JustDisableIt\Controller\DisableRSSFeedsController();
 new \JustDisableIt\Controller\DisableCommentsController();
 new \JustDisableIt\Controller\DisableSearchController();
 new \JustDisableIt\Controller\DisableAuthorArchivesController();

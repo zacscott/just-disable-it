@@ -86,6 +86,12 @@ class SettingsController {
                 'label'   => __( 'Disable Emoji Scripts', 'just-disable-it' ),
                 'desc'    => __( 'Disable default WordPress emoji polyfil scripts.', 'just-disable-it' ),
             ],
+            [
+                'setting' => 'disable_wp_branding',
+                'type'    => 'checkbox',
+                'label'   => __( 'Disable WordPress Branding', 'just-disable-it' ),
+                'desc'    => __( 'Hide all branding added by WordPress core.', 'just-disable-it' ),
+            ],
         ];
 
     }

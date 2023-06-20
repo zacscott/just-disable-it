@@ -80,6 +80,12 @@ class SettingsController {
                 'label'   => __( 'Disable 404 Guessing', 'just-disable-it' ),
                 'desc'    => __( 'Disable default WordPress behaviour of attempting to guess incorrect URLs rather than 404ing.', 'just-disable-it' ),
             ],
+            [
+                'setting' => 'disable_emoji_scripts',
+                'type'    => 'checkbox',
+                'label'   => __( 'Disable Emoji Scripts', 'just-disable-it' ),
+                'desc'    => __( 'Disable default WordPress emoji polyfil scripts.', 'just-disable-it' ),
+            ],
         ];
 
     }

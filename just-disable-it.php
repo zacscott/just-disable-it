@@ -18,3 +18,4 @@ new \JustDisableIt\Controller\SettingsController();
 new \JustDisableIt\Controller\DisableXMLRPCController();
 new \JustDisableIt\Controller\DisableSitemapsController();
 new \JustDisableIt\Controller\DisableCommentsController();
+new \JustDisableIt\Controller\DisableSearchController();

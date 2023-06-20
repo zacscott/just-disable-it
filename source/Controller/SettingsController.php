@@ -50,6 +50,12 @@ class SettingsController {
                 'label'   => __( 'Disable Comments', 'just-disable-it' ),
                 'desc'    => __( 'Disable the comment system entirely.', 'just-disable-it' ),
             ],
+            [
+                'setting' => 'disable_search',
+                'type'    => 'checkbox',
+                'label'   => __( 'Disable Search', 'just-disable-it' ),
+                'desc'    => __( 'Disable any frontend search queries.', 'just-disable-it' ),
+            ],
         ];
 
     }

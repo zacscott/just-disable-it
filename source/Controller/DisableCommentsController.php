@@ -76,8 +76,8 @@ class DisableCommentsController {
         );
 
         // Remove the comments JS.
-        wp_deregister_script('comment-reply');
-		remove_action('wp_head', 'feed_links_extra', 3);
+        wp_deregister_script( 'comment-reply' );
+		remove_action( 'wp_head', 'feed_links_extra', 3 );
 
         // Remove the comments template.
         add_filter( 'comments_template', function() {

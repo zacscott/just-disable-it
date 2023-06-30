@@ -1,4 +1,4 @@
-=== Just SEO ===
+=== Just Disable It ===
 Contributors: zacscottau
 Tags: utility
 Requires at least: 6.0

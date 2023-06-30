@@ -1,7 +1,5 @@
 
-# Just Disable It
-
-_WordPress Plugin_
+# Just Disable It - WordPress Plugin
 
 Disable WordPress features for a faster, cleaner, more secure experience.
 

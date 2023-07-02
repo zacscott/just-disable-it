@@ -10,6 +10,58 @@ namespace JustDisableIt\Model;
 class SettingModel {
 
     /**
+     * The singleton instance of the class.
+     * 
+     * @var SettingModel $instance
+     */
+    protected static $instance = null;
+
+    /**
+     * The plugin settings options, set by add_setting().  
+     * @var array $settings
+     */
+    protected $settings = [];
+
+    /**
+     * Get the singleton instance of the class.
+     * 
+     * @return SettingModel
+     */
+    public static function get_instance() {
+
+        if ( null === self::$instance ) {
+            self::$instance = new SettingModel();
+        }
+
+        return self::$instance;
+
+    }
+
+    /**
+     * Add a setting to the plugin settings options.
+     * 
+     * @param array $setting The setting to add.
+     * 
+     * @return void
+     */
+    public function add_setting( array $setting ) {
+
+        $this->settings[] = $setting;
+
+    }
+
+    /**
+     * Get all of the plugin settings options.
+     * 
+     * @return array
+     */
+    public function get_settings() {
+
+        return $this->settings;
+
+    }
+
+    /**
      * Get the value of a setting.
      * 
      * @param string $setting The name of the setting.
@@ -56,5 +108,7 @@ class SettingModel {
         return $option_name;
 
     }
+
+    protected function __construct() { }
 
 }

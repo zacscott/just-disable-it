@@ -25,4 +25,5 @@ new \JustDisableIt\Controller\Disable404GuessingController();
 new \JustDisableIt\Controller\DisableEmojiScriptsController();
 new \JustDisableIt\Controller\DisableSrcSetController();
 new \JustDisableIt\Controller\DisableWPBrandingController();
+new \JustDisableIt\Controller\DisableAdminMenusController();
 new \JustDisableIt\Controller\SettingsController();

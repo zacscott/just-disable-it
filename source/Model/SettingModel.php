@@ -23,6 +23,13 @@ class SettingModel {
     protected $settings = [];
 
     /**
+     * The plugin settings sections, set by add_section().
+     * 
+     * @var array $sections
+     */
+    protected $sections = [];
+
+    /**
      * Get the singleton instance of the class.
      * 
      * @return SettingModel
@@ -44,9 +51,13 @@ class SettingModel {
      * 
      * @return void
      */
-    public function add_setting( array $setting ) {
+    public function add_setting( string $section, array $setting ) {
 
-        $this->settings[] = $setting;
+        if ( ! isset( $this->settings[$section] ) ) {
+            $this->settings[$section] = [];
+        }
+
+        $this->settings[$section][] = $setting;
 
     }
 
@@ -62,6 +73,30 @@ class SettingModel {
     }
 
     /**
+     * Add a section to the plugin settings sections.
+     * 
+     * @param array $section The section to add.
+     * 
+     * @return void
+     */
+    public function add_section( string $section, array $defition ) {
+
+        $this->sections[$section] = $defition;
+
+    }
+
+    /**
+     * Get all of the plugin settings sections.
+     * 
+     * @return array
+     */
+    public function get_sections() {
+
+        return $this->sections;
+
+    }
+
+    /**
      * Get the value of a setting.
      * 
      * @param string $setting The name of the setting.
@@ -72,7 +107,7 @@ class SettingModel {
      */
     public function get_value( $setting, $default = '' ) {
 
-        $option_name =$this->get_option_name( $setting );
+        $option_name = $this->get_option_name( $setting );
 
         return get_option( $option_name, $default );
 

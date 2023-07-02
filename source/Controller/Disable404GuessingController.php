@@ -16,6 +16,7 @@ class Disable404GuessingController {
         $setting_model = \JustDisableIt\Model\SettingModel::get_instance();
 
         $setting_model->add_setting(
+            'general',
             [
                 'setting' => 'disable_404_guessing',
                 'type'    => 'checkbox',

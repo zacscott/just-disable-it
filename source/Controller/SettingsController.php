@@ -11,9 +11,37 @@ class SettingsController {
 
     public function __construct() {
         
+        add_action( 'admin_init', [ $this, 'define_sections' ] );
         add_action( 'admin_menu', [ $this, 'register_settings_page' ] );
-        add_action( 'admin_init', [ $this, 'register_settings_section' ] );
+        add_action( 'admin_init', [ $this, 'register_settings_sections' ] );
         add_action( 'admin_init', [ $this, 'register_settings' ] );
+
+    }
+
+    /**
+     * Register the defined sections which settings can be bundled into.
+     * 
+     * @return void
+     */
+    public function define_sections() {
+
+        $model = \JustDisableIt\Model\SettingModel::get_instance();
+
+        $model->add_section(
+            'general',
+            [
+                'title' => __( 'General', 'just-disable-it' ),
+                'desc'  => __( 'General settings for the plugin.', 'just-disable-it' ),
+            ]
+        );
+
+        $model->add_section(
+            'admin_menus',
+            [
+                'title' => __( 'Admin Menus', 'just-disable-it' ),
+                'desc'  => __( 'Disable admin menus.', 'just-disable-it' ),
+            ]
+        );
 
     }
 
@@ -75,14 +103,25 @@ class SettingsController {
      * 
      * @return void
      */
-    public function register_settings_section() {
+    public function register_settings_sections() {
         
-        add_settings_section(
-            'just_disable_it_section',
-            '',
-            [ $this, 'render_settings_section' ],
-            'just_disable_it'
-        );
+        $model = \JustDisableIt\Model\SettingModel::get_instance();
+
+        $sections = $model->get_sections();
+        foreach ( $sections as $section => $definition ) {
+
+            add_settings_section(
+                $section,
+                $definition['title'],
+                [ $this, 'render_settings_section' ],
+                'just_disable_it',
+                [
+                    'before_section' => '<br><hr>',
+                    'after_section'  => '<br>',
+                ]
+            );
+
+        }
 
     }
 
@@ -111,21 +150,25 @@ class SettingsController {
 
         $model = \JustDisableIt\Model\SettingModel::get_instance();
 
-        $settings = $model->get_settings();
-        foreach ( $settings as $setting ) {
+        $all_settings = $model->get_settings();
+        foreach ( $all_settings as $section => $section_settings ) {
 
-            $option_name = $model->get_option_name( $setting['setting'] );
+            foreach ( $section_settings as $setting ) {
 
-            register_setting( 'just_disable_it', $option_name );
+                $option_name = $model->get_option_name( $setting['setting'] );
 
-            add_settings_field(
-                $option_name, 
-                $setting['label'],
-                [ $this, 'render_settings_field' ],
-                'just_disable_it',
-                'just_disable_it_section',
-                $setting
-            );
+                register_setting( 'just_disable_it', $option_name );
+
+                add_settings_field(
+                    $option_name, 
+                    $setting['label'],
+                    [ $this, 'render_settings_field' ],
+                    'just_disable_it',
+                    $section,
+                    $setting
+                );
+
+            }
 
         }
         

@@ -24,6 +24,7 @@ class DisableAdminMenusController {
             if ( $menu_page ) {
 
                 $setting_model->add_setting(
+                    'admin_menus',
                     [
                         'setting' => $this->get_menu_setting_name( $menu_page ),
                         'type'    => 'checkbox',

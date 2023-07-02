@@ -1,6 +1,6 @@
 <?php
 
-$model = new \JustDisableIt\Model\SettingModel();
+$model = \JustDisableIt\Model\SettingModel::get_instance();
 
 $option_name = $model->get_option_name( $args['setting'] );
 

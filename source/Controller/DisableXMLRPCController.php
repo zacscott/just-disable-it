@@ -7,6 +7,23 @@ class DisableXMLRPCController {
     public function __construct() {
      
         add_action( 'init', [ $this, 'maybe_disable' ] );
+        add_action( 'admin_init', [ $this, 'add_settings' ], -1 );
+
+    }
+
+    public function add_settings() {
+
+        $setting_model = \JustDisableIt\Model\SettingModel::get_instance();
+
+        $setting_model->add_setting(
+            'general',
+            [
+                'setting' => 'disable_xmlrpc',
+                'type'    => 'checkbox',
+                'label'   => __( 'Disable XMLRPC', 'just-disable-it' ),
+                'desc'    => __( 'Disable the XMLRPC API interface.', 'just-disable-it' ),
+            ]
+        );
 
     }
 
@@ -44,7 +61,7 @@ class DisableXMLRPCController {
 
     protected function is_disabled() {
 
-        $setting_model = new \JustDisableIt\Model\SettingModel();
+        $setting_model = \JustDisableIt\Model\SettingModel::get_instance();
 
         return $setting_model->get_value( 'disable_xmlrpc' );
 

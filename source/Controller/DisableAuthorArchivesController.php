@@ -7,6 +7,23 @@ class DisableAuthorArchivesController {
     public function __construct() {
      
         add_action( 'init', [ $this, 'maybe_disable' ] );
+        add_action( 'admin_init', [ $this, 'add_settings' ], -1 );
+
+    }
+
+    public function add_settings() {
+
+        $setting_model = \JustDisableIt\Model\SettingModel::get_instance();
+
+        $setting_model->add_setting(
+            'general',
+            [
+                'setting' => 'disable_author_archives',
+                'type'    => 'checkbox',
+                'label'   => __( 'Disable Author Archives', 'just-disable-it' ),
+                'desc'    => __( 'Disable the author archives.', 'just-disable-it' ),
+            ]
+        );
 
     }
 
@@ -65,7 +82,7 @@ class DisableAuthorArchivesController {
 
     protected function is_disabled() {
 
-        $setting_model = new \JustDisableIt\Model\SettingModel();
+        $setting_model = \JustDisableIt\Model\SettingModel::get_instance();
 
         return $setting_model->get_value( 'disable_author_archives' );
 

@@ -7,6 +7,23 @@ class DisableCommentsController {
     public function __construct() {
      
         add_action( 'init', [ $this, 'maybe_disable' ] );
+        add_action( 'admin_init', [ $this, 'add_settings' ], -1 );
+
+    }
+
+    public function add_settings() {
+
+        $setting_model = \JustDisableIt\Model\SettingModel::get_instance();
+
+        $setting_model->add_setting(
+            'general',
+            [
+                'setting' => 'disable_comments',
+                'type'    => 'checkbox',
+                'label'   => __( 'Disable Comments', 'just-disable-it' ),
+                'desc'    => __( 'Disable comments on the frontend and in the admin.', 'just-disable-it' ),
+            ]
+        );
 
     }
 
@@ -93,7 +110,7 @@ class DisableCommentsController {
 
     protected function is_disabled() {
 
-        $setting_model = new \JustDisableIt\Model\SettingModel();
+        $setting_model = \JustDisableIt\Model\SettingModel::get_instance();
 
         return $setting_model->get_value( 'disable_comments' );
 

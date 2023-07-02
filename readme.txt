@@ -32,6 +32,7 @@ Currently these features can be disabled:
 == Screenshots ==
 
 1. Disable features settings page.
+2. Disable admin menu options.
 
 == Changelog ==
 

@@ -6,8 +6,8 @@ class DisableAdminMenusController {
 
     public function __construct() {
      
-        add_action( 'admin_menu', [ $this, 'add_settings' ] );
-        add_action( 'admin_menu', [ $this, 'maybe_disable' ] );
+        add_action( 'admin_menu', [ $this, 'add_settings' ], PHP_INT_MAX );
+        add_action( 'admin_menu', [ $this, 'maybe_disable' ], PHP_INT_MAX );
 
     }
 

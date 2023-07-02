@@ -3,7 +3,7 @@ Contributors: zacscottau
 Tags: utility
 Requires at least: 6.0
 Tested up to: 6.2.2
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -35,6 +35,9 @@ Currently these features can be disabled:
 2. Disable admin menu options.
 
 == Changelog ==
+
+= 1.1.1 =
+* Change plugin file.
 
 = 1.1.0 =
 * Add option to disable admin menus.

@@ -2,7 +2,7 @@
 Contributors: zacscottau
 Tags: utility
 Requires at least: 6.0
-Tested up to: 6.2.2
+Tested up to: 6.3.1
 Stable tag: 1.1.1
 Requires PHP: 7.0
 License: GPLv3 or later

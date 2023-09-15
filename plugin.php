@@ -21,6 +21,7 @@ new \JustDisableIt\Controller\DisableRSSFeedsController();
 new \JustDisableIt\Controller\DisableCommentsController();
 new \JustDisableIt\Controller\DisableSearchController();
 new \JustDisableIt\Controller\DisableAuthorArchivesController();
+new \JustDisableIt\Controller\DisableAttachmentPagesController();
 new \JustDisableIt\Controller\Disable404GuessingController();
 new \JustDisableIt\Controller\DisableEmojiScriptsController();
 new \JustDisableIt\Controller\DisableSrcSetController();

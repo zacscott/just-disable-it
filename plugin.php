@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Just Disable It
- * Version:     1.1.1
+ * Version:     1.1.2
  * Author:      Zac Scott
  * Author URI:  https://zacscott.net
  * Description: Disable WordPress features for a faster, cleaner, more secure experience.

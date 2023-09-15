@@ -3,7 +3,7 @@ Contributors: zacscottau
 Tags: utility
 Requires at least: 6.0
 Tested up to: 6.3.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -23,6 +23,7 @@ Currently these features can be disabled:
 - Comments
 - Search (frontend only)
 - Author archives
+- Attachment pages
 - 404 guessing 
 - Emoji scripts cruft
 - srcset's (WordPress core generated)
@@ -35,6 +36,9 @@ Currently these features can be disabled:
 2. Disable admin menu options.
 
 == Changelog ==
+
+= 1.1.2 =
+* Add option to disable attachment pages.
 
 = 1.1.1 =
 * Change plugin file.
